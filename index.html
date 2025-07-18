@@ -13,6 +13,14 @@
             margin: 0;
             padding: 0;
         }
+        .header-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.9;
+            transition: opacity 1s ease-in-out;
+        }
         .header {
             background-color: #525b51;
             color: #e8d6b9;
@@ -58,6 +66,7 @@
 </head>
 <body>
 
+    <img src="./images/Luis.jpg" alt="Luis the old man" class="header-image">
     <div class="header">Ask Luis</div>
 
     <button class="category-button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
