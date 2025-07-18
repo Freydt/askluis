@@ -16,13 +16,21 @@
         .header-container {
             position: relative;
             overflow: hidden;
-            height: 180px;
+            height: 300px;
         }
         .header-image {
             width: 100%;
             height: auto;
-            transform: translateY(-30%);
+            display: block;
             transition: transform 0.5s ease;
+        }
+        .header-fade {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #525b51 100%);
+            z-index: 1;
         }
         .header {
             background-color: #525b51;
@@ -31,16 +39,6 @@
             text-align: center;
             font-size: 1.8em;
             font-weight: bold;
-            position: relative;
-            z-index: 2;
-        }
-        .header-fade {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 50px;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #525b51 100%);
-            z-index: 1;
         }
         .category-button {
             background-color: #85a826;
@@ -116,7 +114,7 @@
         window.addEventListener('scroll', function() {
             const headerImg = document.getElementById('headerImg');
             const scrollY = window.scrollY;
-            headerImg.style.transform = `translateY(${-30 + scrollY * 0.2}%)`;
+            headerImg.style.transform = `translateY(${scrollY * 0.2}px)`;
         });
     </script>
 
