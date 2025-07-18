@@ -8,48 +8,57 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ece5dd;
+            background-color: #e8d6b9;
+            color: #3d2c1e;
             margin: 0;
             padding: 0;
         }
         .header {
-            background-color: #075e54;
-            color: white;
+            background-color: #3d2c1e;
+            color: #e8d6b9;
             padding: 15px;
             text-align: center;
-            font-size: 1.5em;
+            font-size: 1.8em;
+            font-weight: bold;
         }
         .category-button {
-            background-color: #25d366;
+            background-color: #8b6e4b;
             color: white;
             border: none;
             width: 90%;
             padding: 15px;
             margin: 10px auto;
             display: block;
-            font-size: 1em;
-            border-radius: 5px;
+            font-size: 1.1em;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .category-button:hover {
+            background-color: #6e543a;
         }
         .chat-box {
             background-color: white;
             width: 90%;
             margin: 10px auto;
-            border-radius: 5px;
+            border-radius: 8px;
             padding: 10px;
             display: none;
+            border: 1px solid #3d2c1e;
         }
         .chat-message {
-            background-color: #dcf8c6;
+            background-color: #f4efe8;
+            color: #3d2c1e;
             margin: 5px 0;
             padding: 10px;
             border-radius: 5px;
+            border-left: 4px solid #8b6e4b;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">AskLuis</div>
+    <div class="header">Ask Luis</div>
 
     <button class="category-button" onclick="toggleChat('seiseralm')">Seiser Alm</button>
     <div id="seiseralm" class="chat-box">
