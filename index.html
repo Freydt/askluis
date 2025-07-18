@@ -35,10 +35,26 @@
         .header {
             background-color: #525b51;
             color: #e8d6b9;
-            padding: 15px;
-            text-align: center;
-            font-size: 1.8em;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 1.2em;
+        }
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .profile-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .profile-name {
             font-weight: bold;
+        }
+        .profile-status {
+            font-size: 0.8em;
         }
         .language-button, .category-button {
             background-color: #85a826;
@@ -81,7 +97,13 @@
         <img src="./images/luis.png" alt="Luis the old man" class="header-image" id="headerImg">
         <div class="header-fade"></div>
     </div>
-    <div class="header">Ask Luis</div>
+    <div class="header">
+        <img src="./images/luisprofile2.png" alt="Luis Profile" class="profile-pic">
+        <div class="profile-text">
+            <div class="profile-name">Luis</div>
+            <div class="profile-status">online</div>
+        </div>
+    </div>
 
     <div id="languageSelection">
         <button class="language-button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
