@@ -83,9 +83,11 @@
     </div>
     <div class="header">Ask Luis</div>
 
-    <button class="language-button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
-    <button class="language-button" onclick="showCategories('it')">🇮🇹 Italiano</button>
-    <button class="language-button" onclick="showCategories('en')">🇬🇧 English</button>
+    <div id="languageSelection">
+        <button class="language-button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
+        <button class="language-button" onclick="showCategories('it')">🇮🇹 Italiano</button>
+        <button class="language-button" onclick="showCategories('en')">🇬🇧 English</button>
+    </div>
 
     <div id="categories" style="display:none;">
         <button class="category-button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
@@ -118,6 +120,7 @@
         }
 
         function showCategories(lang) {
+            document.getElementById('languageSelection').style.display = 'none';
             if (lang === 'en') {
                 document.getElementById('categories').style.display = 'block';
             } else {
