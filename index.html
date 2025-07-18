@@ -56,7 +56,7 @@
         .profile-status {
             font-size: 0.8em;
         }
-        .language-button, .category-button {
+        .language-button, .category-button, .back-button {
             background-color: #85a826;
             color: white;
             border: none;
@@ -69,8 +69,18 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        .language-button:hover, .category-button:hover {
+        .language-button:hover, .category-button:hover, .back-button:hover {
             background-color: #6e543a;
+        }
+        .back-button {
+            width: auto;
+            padding: 5px 15px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        .back-container {
+            text-align: center;
+            margin-top: 10px;
         }
         .chat-box {
             background-color: white;
@@ -129,6 +139,9 @@
             <div class="chat-message">Groceries Tip 1: Local farmer market every Friday.</div>
             <div class="chat-message">Groceries Tip 2: Best bakery in the center!</div>
         </div>
+        <div class="back-container">
+            <button class="back-button" onclick="goBack()">← Back</button>
+        </div>
     </div>
 
     <script>
@@ -148,6 +161,11 @@
             } else {
                 document.getElementById('categories').style.display = 'none';
             }
+        }
+
+        function goBack() {
+            document.getElementById('categories').style.display = 'none';
+            document.getElementById('languageSelection').style.display = 'block';
         }
 
         window.addEventListener('scroll', function() {
