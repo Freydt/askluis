@@ -40,7 +40,7 @@
             font-size: 1.8em;
             font-weight: bold;
         }
-        .category-button {
+        .language-button, .category-button {
             background-color: #85a826;
             color: white;
             border: none;
@@ -53,7 +53,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        .category-button:hover {
+        .language-button:hover, .category-button:hover {
             background-color: #6e543a;
         }
         .chat-box {
@@ -83,22 +83,28 @@
     </div>
     <div class="header">Ask Luis</div>
 
-    <button class="category-button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
-    <div id="seiseralm" class="chat-box">
-        <div class="chat-message">Tip 1 for Seiser Alm: Explore the hidden spots!</div>
-        <div class="chat-message">Tip 2 for Seiser Alm: Perfect for sunrise hikes.</div>
-    </div>
+    <button class="language-button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
+    <button class="language-button" onclick="showCategories('it')">🇮🇹 Italiano</button>
+    <button class="language-button" onclick="showCategories('en')">🇬🇧 English</button>
 
-    <button class="category-button" onclick="toggleChat('adventure')">🥾 Adventure</button>
-    <div id="adventure" class="chat-box">
-        <div class="chat-message">Adventure Tip 1: Try canyoning nearby.</div>
-        <div class="chat-message">Adventure Tip 2: Paragliding at sunset!</div>
-    </div>
+    <div id="categories" style="display:none;">
+        <button class="category-button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
+        <div id="seiseralm" class="chat-box">
+            <div class="chat-message">Tip 1 for Seiser Alm: Explore the hidden spots!</div>
+            <div class="chat-message">Tip 2 for Seiser Alm: Perfect for sunrise hikes.</div>
+        </div>
 
-    <button class="category-button" onclick="toggleChat('groceries')">🍞 Groceries</button>
-    <div id="groceries" class="chat-box">
-        <div class="chat-message">Groceries Tip 1: Local farmer market every Friday.</div>
-        <div class="chat-message">Groceries Tip 2: Best bakery in the center!</div>
+        <button class="category-button" onclick="toggleChat('adventure')">🥾 Adventure</button>
+        <div id="adventure" class="chat-box">
+            <div class="chat-message">Adventure Tip 1: Try canyoning nearby.</div>
+            <div class="chat-message">Adventure Tip 2: Paragliding at sunset!</div>
+        </div>
+
+        <button class="category-button" onclick="toggleChat('groceries')">🍞 Groceries</button>
+        <div id="groceries" class="chat-box">
+            <div class="chat-message">Groceries Tip 1: Local farmer market every Friday.</div>
+            <div class="chat-message">Groceries Tip 2: Best bakery in the center!</div>
+        </div>
     </div>
 
     <script>
@@ -108,6 +114,14 @@
                 box.style.display = 'none';
             } else {
                 box.style.display = 'block';
+            }
+        }
+
+        function showCategories(lang) {
+            if (lang === 'en') {
+                document.getElementById('categories').style.display = 'block';
+            } else {
+                document.getElementById('categories').style.display = 'none';
             }
         }
 
