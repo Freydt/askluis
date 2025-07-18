@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AskLuis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ece5dd;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #075e54;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .category-button {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            width: 90%;
+            padding: 15px;
+            margin: 10px auto;
+            display: block;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .chat-box {
+            background-color: white;
+            width: 90%;
+            margin: 10px auto;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+        }
+        .chat-message {
+            background-color: #dcf8c6;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">AskLuis</div>
+
+    <button class="category-button" onclick="toggleChat('seiseralm')">Seiser Alm</button>
+    <div id="seiseralm" class="chat-box">
+        <div class="chat-message">Tip 1 for Seiser Alm: Explore the hidden spots!</div>
+        <div class="chat-message">Tip 2 for Seiser Alm: Perfect for sunrise hikes.</div>
+    </div>
+
+    <button class="category-button" onclick="toggleChat('adventure')">Adventure</button>
+    <div id="adventure" class="chat-box">
+        <div class="chat-message">Adventure Tip 1: Try canyoning nearby.</div>
+        <div class="chat-message">Adventure Tip 2: Paragliding at sunset!</div>
+    </div>
+
+    <button class="category-button" onclick="toggleChat('groceries')">Groceries</button>
+    <div id="groceries" class="chat-box">
+        <div class="chat-message">Groceries Tip 1: Local farmer market every Friday.</div>
+        <div class="chat-message">Groceries Tip 2: Best bakery in the center!</div>
+    </div>
+
+    <script>
+        function toggleChat(category) {
+            const box = document.getElementById(category);
+            if (box.style.display === 'block') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
