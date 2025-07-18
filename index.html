@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e8d6b9;
+            background-color: #f7f7f7;
             color: #3d2c1e;
             margin: 0;
             padding: 0;
@@ -33,18 +33,20 @@
             z-index: 1;
         }
         .header {
-            background-color: #525b51;
-            color: #e8d6b9;
+            background: linear-gradient(90deg, #4caf50, #66bb6a);
+            color: white;
             padding: 10px;
             display: flex;
             align-items: center;
             font-size: 1.2em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .profile-pic {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             margin-right: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .profile-text {
             display: flex;
@@ -56,8 +58,8 @@
         .profile-status {
             font-size: 0.8em;
         }
-        .language-button, .category-button, .back-button {
-            background-color: #85a826;
+        .button, .back-button {
+            background: linear-gradient(90deg, #85a826, #9ecb30);
             color: white;
             border: none;
             width: 90%;
@@ -65,39 +67,45 @@
             margin: 10px auto;
             display: block;
             font-size: 1.1em;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
         }
-        .language-button:hover, .category-button:hover, .back-button:hover {
-            background-color: #6e543a;
+        .button:hover, .back-button:hover {
+            background: linear-gradient(90deg, #6e8e22, #87b025);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         .back-button {
             width: auto;
-            padding: 5px 15px;
+            padding: 8px 20px;
             font-size: 0.9em;
             display: inline-block;
+            background: linear-gradient(90deg, #666666, #888888);
         }
         .back-container {
             text-align: center;
             margin-top: 10px;
         }
         .chat-box {
-            background-color: white;
+            background: white;
             width: 90%;
             margin: 10px auto;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 10px;
             display: none;
-            border: 1px solid #3d2c1e;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .chat-message {
-            background-color: #f4efe8;
+            background: #f0f4f7;
             color: #3d2c1e;
             margin: 5px 0;
             padding: 10px;
-            border-radius: 5px;
+            border-radius: 8px;
             border-left: 4px solid #8b6e4b;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
     </style>
 </head>
@@ -116,25 +124,25 @@
     </div>
 
     <div id="languageSelection">
-        <button class="language-button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
-        <button class="language-button" onclick="showCategories('it')">🇮🇹 Italiano</button>
-        <button class="language-button" onclick="showCategories('en')">🇬🇧 English</button>
+        <button class="button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
+        <button class="button" onclick="showCategories('it')">🇮🇹 Italiano</button>
+        <button class="button" onclick="showCategories('en')">🇬🇧 English</button>
     </div>
 
     <div id="categories" style="display:none;">
-        <button class="category-button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
+        <button class="button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
         <div id="seiseralm" class="chat-box">
             <div class="chat-message">Tip 1 for Seiser Alm: Explore the hidden spots!</div>
             <div class="chat-message">Tip 2 for Seiser Alm: Perfect for sunrise hikes.</div>
         </div>
 
-        <button class="category-button" onclick="toggleChat('adventure')">🥾 Adventure</button>
+        <button class="button" onclick="toggleChat('adventure')">🥾 Adventure</button>
         <div id="adventure" class="chat-box">
             <div class="chat-message">Adventure Tip 1: Try canyoning nearby.</div>
             <div class="chat-message">Adventure Tip 2: Paragliding at sunset!</div>
         </div>
 
-        <button class="category-button" onclick="toggleChat('groceries')">🍞 Groceries</button>
+        <button class="button" onclick="toggleChat('groceries')">🍞 Groceries</button>
         <div id="groceries" class="chat-box">
             <div class="chat-message">Groceries Tip 1: Local farmer market every Friday.</div>
             <div class="chat-message">Groceries Tip 2: Best bakery in the center!</div>
