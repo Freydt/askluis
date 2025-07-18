@@ -102,24 +102,37 @@
             text-align: center;
             margin-top: 10px;
         }
-        .chat-box {
+        .whatsapp-bubble {
             background: white;
-            width: 90%;
-            margin: 10px auto;
-            border-radius: 12px;
-            padding: 10px;
-            display: none;
-            border: 1px solid #dcdcdc;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .chat-message {
-            background: #f0f4f7;
-            color: #3d2c1e;
-            margin: 5px 0;
-            padding: 10px;
+            color: black;
             border-radius: 8px;
-            border-left: 4px solid #8b6e4b;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 10px;
+            max-width: 80%;
+            margin: 10px auto;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .whatsapp-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-top-color: white;
+            border-bottom: 0;
+            border-left: 0;
+            margin-left: -5px;
+            margin-bottom: -5px;
+            transform: rotate(45deg);
+        }
+        .checkmarks {
+            display: block;
+            text-align: right;
+            font-size: 0.8em;
+            color: #34b7f1;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -144,50 +157,47 @@
     </div>
 
     <div id="categories" style="display:none;">
-        <button class="button" onclick="toggleChat('seiseralm')">⛰️ Seiser Alm</button>
-        <div id="seiseralm" class="chat-box">
-            <div class="chat-message">Tip 1 for Seiser Alm: Explore the hidden spots!</div>
-            <div class="chat-message">Tip 2 for Seiser Alm: Perfect for sunrise hikes.</div>
-        </div>
-
-        <button class="button" onclick="toggleChat('adventure')">🥾 Adventure</button>
-        <div id="adventure" class="chat-box">
-            <div class="chat-message">Adventure Tip 1: Try canyoning nearby.</div>
-            <div class="chat-message">Adventure Tip 2: Paragliding at sunset!</div>
-        </div>
-
-        <button class="button" onclick="toggleChat('groceries')">🍞 Groceries</button>
-        <div id="groceries" class="chat-box">
-            <div class="chat-message">Groceries Tip 1: Local farmer market every Friday.</div>
-            <div class="chat-message">Groceries Tip 2: Best bakery in the center!</div>
-        </div>
+        <button class="button" onclick="selectCategory('seiseralm')">⛰️ Seiser Alm</button>
+        <button class="button" onclick="selectCategory('adventure')">🥾 Adventure</button>
+        <button class="button" onclick="selectCategory('groceries')">🍞 Groceries</button>
         <div class="back-container">
             <button class="back-button" onclick="goBack()">← Back</button>
         </div>
     </div>
 
+    <div id="chatArea"></div>
+
     <script>
-        function toggleChat(category) {
-            const box = document.getElementById(category);
-            if (box.style.display === 'block') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'block';
+        function selectCategory(category) {
+            document.getElementById('categories').style.display = 'none';
+            const chatArea = document.getElementById('chatArea');
+            chatArea.innerHTML = `<button class="button">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
+            if (category === 'groceries') {
+                chatArea.innerHTML += `<div class="whatsapp-bubble">
+                    Here’s a tip I’ll give you for free — and it’s an important one! In South Tyrol, buying bottled water is unnecessary. We have some of the world’s finest tap water — fresh, pure, and drinkable everywhere. It even tastes better than most bottled water. So save your money, skip the plastic, and enjoy South Tyrol’s natural water. You’re welcome!
+                    <span class="checkmarks">✔✔</span>
+                </div>`;
             }
+            chatArea.innerHTML += `<div class="back-container">
+                <button class="back-button" onclick="resetCategories()">← Back</button>
+            </div>`;
         }
 
         function showCategories(lang) {
             document.getElementById('languageSelection').style.display = 'none';
-            if (lang === 'en') {
-                document.getElementById('categories').style.display = 'block';
-            } else {
-                document.getElementById('categories').style.display = 'none';
-            }
+            document.getElementById('categories').style.display = 'block';
+            document.getElementById('chatArea').innerHTML = '';
         }
 
         function goBack() {
             document.getElementById('categories').style.display = 'none';
             document.getElementById('languageSelection').style.display = 'block';
+            document.getElementById('chatArea').innerHTML = '';
+        }
+
+        function resetCategories() {
+            document.getElementById('categories').style.display = 'block';
+            document.getElementById('chatArea').innerHTML = '';
         }
 
         window.addEventListener('scroll', function() {
