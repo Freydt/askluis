@@ -211,6 +211,7 @@
 <script>
     let activeCategory = null;
 
+    
     function selectCategory(category) {
         const chatArea = document.getElementById('chatArea');
         if (activeCategory === category) {
@@ -220,30 +221,18 @@
         }
         activeCategory = category;
         document.getElementById('categories').style.display = 'none';
-        
-    chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
-    
-    }
-
-    function showCategories(lang) {
-        document.getElementById('languageSelection').style.display = 'none';
-        document.getElementById('categories').style.display = 'block';
-        document.getElementById('chatArea').innerHTML = '';
-        activeCategory = null;
-    }
-
-    function goBack() {
-        document.getElementById('categories').style.display = 'none';
-        document.getElementById('languageSelection').style.display = 'block';
-        document.getElementById('chatArea').innerHTML = '';
-        activeCategory = null;
-    }
-
-    function resetCategories() {
-        document.getElementById('categories').style.display = 'block';
-        document.getElementById('chatArea').innerHTML = '';
-        activeCategory = null;
+        let buttonLabel = '';
+        if (category === 'seiseralm') {
+            buttonLabel = '⛰️ Seiser Alm';
+        } else if (category === 'adventure') {
+            buttonLabel = '🥾 Adventure';
+        } else if (category === 'groceries') {
+            buttonLabel = '🍞 Groceries';
+        }
+        chatArea.innerHTML = '<button class="button" onclick="selectCategory(\'' + category + '\')">' + buttonLabel + '</button>';
         window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    
     }
 
     window.addEventListener('scroll', function() {
