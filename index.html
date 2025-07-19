@@ -186,7 +186,67 @@
         </div>
     </div>
 
-    <div id="chatArea"></div>
+    
+<div id="chatArea"></div>
+
+<script>
+    
+function insertSeiserAlmBubbles() {
+    const chatArea = document.getElementById('chatArea');
+    chatArea.innerHTML = '<button class="button" onclick="selectCategory(\'seiseralm\')">⛰️ Seiser Alm</button>';
+
+    const firstBubble = document.createElement('div');
+    firstBubble.className = 'whatsapp-bubble';
+    firstBubble.style.animation = 'slideIn 1s forwards';
+    firstBubble.innerHTML = "The Seiser Alm is famous for its breathtaking panoramic views, perfect for hiking, walking, mountain biking, and more. But it’s also a hotspot for tourists — which often means crowded trails and packed spots. Good thing I know a few insider tips on how locals explore the Seiser Alm, including the best routes and the most stunning hidden spots. And of course, I’m here to share them with you. <span class='checkmarks'>✔✔</span>";
+    chatArea.appendChild(firstBubble);
+
+    setTimeout(() => {
+        const teaserBubble = document.createElement('div');
+        teaserBubble.className = 'whatsapp-bubble';
+        teaserBubble.style.animation = 'slideIn 1s forwards';
+        teaserBubble.innerHTML = "Would you like to know how to reach the Seiser Alm while saving money — and avoiding the typical tourist crowds? I know that sounds like a bold promise, but I’ll show you how to experience the Seiser Alm in its most beautiful, peaceful, and affordable way — just like a true local would.<br><br><i>So, the Seiser Alm tends to get crowded during the day... but...</i><br><span style='opacity: 0.6;'>Unlock the full tip and discover how locals really do it.</span><br><button class='button' onclick='window.location.href=\'https://checkout.stripe.com/pay/seiseralmX5P\''>Unlock for €5</button>";
+        chatArea.appendChild(teaserBubble);
+
+        const backBtn = document.createElement('div');
+        backBtn.className = 'back-container';
+        backBtn.innerHTML = '<button class="back-button" onclick="resetCategories()">← Back</button>';
+        chatArea.appendChild(backBtn);
+
+    }, 1000);
+}
+
+        const chatArea = document.getElementById('chatArea');
+        chatArea.innerHTML = '<button class="button" onclick="selectCategory(\'seiseralm\')">⛰️ Seiser Alm</button>';
+
+        const firstBubble = document.createElement('div');
+        firstBubble.className = 'whatsapp-bubble';
+        firstBubble.style.animation = 'slideIn 1s forwards';
+        firstBubble.innerHTML = "The Seiser Alm is famous for its breathtaking panoramic views, perfect for hiking, walking, mountain biking, and more. But it’s also a hotspot for tourists — which often means crowded trails and packed spots. Good thing I know a few insider tips on how locals explore the Seiser Alm, including the best routes and the most stunning hidden spots. And of course, I’m here to share them with you. <span class='checkmarks'>✔✔</span>";
+        chatArea.appendChild(firstBubble);
+
+        setTimeout(() => {
+            const secondBubble = document.createElement('div');
+            secondBubble.className = 'whatsapp-bubble';
+            secondBubble.style.animation = 'slideIn 1s forwards';
+            secondBubble.innerHTML = "Would you like to know how to reach the Seiser Alm while saving money — and avoiding the typical tourist crowds? I know that sounds like a bold promise, but I’ll show you how to experience the Seiser Alm in its most beautiful, peaceful, and affordable way — just like a true local would. <span class='checkmarks'>✔✔</span>";
+            chatArea.appendChild(secondBubble);
+
+            const lockedBubble = document.createElement('div');
+            lockedBubble.className = 'whatsapp-bubble';
+            lockedBubble.id = 'lockedBubbleSeiserAlm';
+            lockedBubble.innerHTML = "🔒 So, the Seiser Alm tends to get crowded during the day… but… <br><button class='button' onclick='window.location.href=\'https://checkout.stripe.com/pay/seiseralmX5P\' '>Unlock for €5</button>";
+            chatArea.appendChild(lockedBubble);
+
+            const backBtn = document.createElement('div');
+            backBtn.className = 'back-container';
+            backBtn.innerHTML = '<button class="back-button" onclick="resetCategories()">← Back</button>';
+            chatArea.appendChild(backBtn);
+
+        }, 1000);
+    }
+</script>
+
 
     
     
