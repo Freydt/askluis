@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AskLuis</title>
 <style>
-/* Your existing CSS here */
-/* WhatsApp-style bubble animation */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 @keyframes swooshIn {
   0% { transform: translateX(100%); opacity: 0; }
   100% { transform: translateX(0); opacity: 1; }
@@ -17,7 +21,15 @@
 </style>
 </head>
 <body>
-<!-- Existing HTML elements -->
+
+<div id="categories">
+  <button onclick="selectCategory('seiseralm')">Seiser Alm</button>
+  <button onclick="selectCategory('adventure')">Adventure</button>
+  <button onclick="selectCategory('groceries')">Groceries</button>
+</div>
+
+<div id="chatArea"></div>
+
 <script>
 function selectCategory(category) {
     document.getElementById('categories').style.display = 'none';
@@ -49,6 +61,12 @@ function selectCategory(category) {
         <button class="back-button" onclick="resetCategories()">← Back</button>
     </div>`;
 }
+
+function resetCategories() {
+    document.getElementById('categories').style.display = 'block';
+    document.getElementById('chatArea').innerHTML = '';
+}
 </script>
+
 </body>
 </html>
