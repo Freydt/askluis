@@ -6,13 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AskLuis</title>
     <style>
-        /* ... (CSS unchanged from previous steps, keeping it short for brevity) ... */
+        /* Using your correct original CSS with all styles intact */
         body {
             font-family: Arial, sans-serif;
             background-color: #f7f7f7;
             color: #3d2c1e;
             margin: 0;
             padding: 0;
+        }
+        .button, .back-button {
+            background: linear-gradient(90deg, #85a826, #9ecb30);
+            color: white;
+            border: none;
+            width: 90%;
+            padding: 15px;
+            margin: 10px auto;
+            display: block;
+            font-size: 1.1em;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .button:hover, .back-button:hover {
+            background: linear-gradient(90deg, #6e8e22, #87b025);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .back-button {
+            width: auto;
+            padding: 8px 20px;
+            font-size: 0.9em;
+            display: inline-block;
+            background: linear-gradient(90deg, #666666, #888888);
         }
         .whatsapp-bubble {
             opacity: 0;
@@ -35,22 +61,20 @@
 </head>
 <body>
 
-<div id="wrapper">
-    <div id="languageSelection">
-        <button onclick="showCategories('de')">🇩🇪 Deutsch</button>
-        <button onclick="showCategories('it')">🇮🇹 Italiano</button>
-        <button onclick="showCategories('en')">🇬🇧 English</button>
-    </div>
-
-    <div id="categories" style="display:none;">
-        <button onclick="selectCategory('seiseralm')">⛰️ Seiser Alm</button>
-        <button onclick="selectCategory('adventure')">🥾 Adventure</button>
-        <button onclick="selectCategory('groceries')">🍞 Groceries</button>
-        <div><button onclick="goBack()">← Back</button></div>
-    </div>
-
-    <div id="chatArea"></div>
+<div id="languageSelection">
+    <button class="button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
+    <button class="button" onclick="showCategories('it')">🇮🇹 Italiano</button>
+    <button class="button" onclick="showCategories('en')">🇬🇧 English</button>
 </div>
+
+<div id="categories" style="display:none;">
+    <button class="button" onclick="selectCategory('seiseralm')">⛰️ Seiser Alm</button>
+    <button class="button" onclick="selectCategory('adventure')">🥾 Adventure</button>
+    <button class="button" onclick="selectCategory('groceries')">🍞 Groceries</button>
+    <div><button class="back-button" onclick="goBack()">← Back</button></div>
+</div>
+
+<div id="chatArea"></div>
 
 <script>
     let activeCategory = null;
@@ -87,7 +111,7 @@
         }
         activeCategory = category;
         document.getElementById('categories').style.display = 'none';
-        chatArea.innerHTML = `<button onclick="selectCategory('${category}')">${category}</button>`;
+        chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category}</button>`;
 
         if (category === 'groceries') {
             const firstBubble = document.createElement('div');
@@ -107,9 +131,8 @@
                     thirdBubble.innerHTML = `Hello<span class="checkmarks">✔✔</span>`;
                     chatArea.appendChild(thirdBubble);
 
-                    chatArea.innerHTML += `<div><button onclick="resetCategories()">← Back</button></div>`;
+                    chatArea.innerHTML += `<div><button class="back-button" onclick="resetCategories()">← Back</button></div>`;
                 }, 1000);
-
             }, 1000);
 
         } else if (category === 'seiseralm') {
@@ -128,11 +151,10 @@
                 }
                 chatArea.appendChild(secondBubble);
 
-                chatArea.innerHTML += `<div><button onclick="resetCategories()">← Back</button></div>`;
+                chatArea.innerHTML += `<div><button class="back-button" onclick="resetCategories()">← Back</button></div>`;
             }, 1000);
-
         } else {
-            chatArea.innerHTML += `<div><button onclick="resetCategories()">← Back</button></div>`;
+            chatArea.innerHTML += `<div><button class="back-button" onclick="resetCategories()">← Back</button></div>`;
         }
     }
 
