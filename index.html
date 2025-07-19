@@ -230,22 +230,7 @@
                     backBtn.innerHTML = `<button class="back-button" onclick="resetCategories()">← Back</button>`;
                     chatArea.appendChild(backBtn);
 
-                }
-
-    if (category === 'seiseralm') {
-        chatArea.innerHTML += `<div class="whatsapp-bubble swoosh">
-            The Seiser Alm is famous for its breathtaking panoramic views, countless hiking and biking trails, and its natural beauty. But with its popularity comes the crowds. Luckily, I know some insider tips — the kind locals use — to experience the Seiser Alm at its best: hidden trails, peaceful spots, and the most stunning views. And yes, I’m here to share them with you.
-            <span class="checkmarks">✔✔</span>
-        </div>`;
-
-        setTimeout(() => {
-            chatArea.innerHTML += `<div class="whatsapp-bubble swoosh">
-                Want to know how to reach the Seiser Alm while saving money <em>and</em> avoiding the typical tourist crowds? It may sound like a bold promise, but I’ll show you the most beautiful, quietest, and cheapest ways — just like a true local would.<br><br><em>(What most people don’t know…)</em><br><strong>so the Seiser Alm gets really crowded during the day… but…</strong>
-                <span class="checkmarks">✔✔</span>
-            </div>`;
-        }, 1000);
-    }
-, 1000);
+                }, 1000);
             } else {
                 chatArea.innerHTML += `<div class="back-container">
                     <button class="back-button" onclick="resetCategories()">← Back</button>
@@ -254,7 +239,7 @@
         }
 
         function showCategories(lang) {
-            
+            document.getElementById('languageSelection').style.display = 'none';
             document.getElementById('categories').style.display = 'block';
             document.getElementById('chatArea').innerHTML = '';
             activeCategory = null;
@@ -325,7 +310,6 @@
     checkUnlocks();
     showPremiumBubbles();
 </script>
-<script>document.getElementById('languageSelection').style.display = 'block';</script>
 </body>
 
 </html>
