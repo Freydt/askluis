@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AskLuis - Test Unlock</title>
+    <title>AskLuis - Premium Unlock</title>
     <style>
         body, html {
             overflow-x: hidden;
             max-width: 100vw;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
         .whatsapp-bubble {
             background: white;
@@ -48,6 +51,21 @@
 </head>
 <body>
 
+<div id="languageSelection">
+    <button class="button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
+    <button class="button" onclick="showCategories('it')">🇮🇹 Italiano</button>
+    <button class="button" onclick="showCategories('en')">🇬🇧 English</button>
+</div>
+
+<div id="categories" style="display:none;">
+    <button class="button" onclick="selectCategory('seiseralm')">⛰️ Seiser Alm</button>
+    <button class="button" onclick="selectCategory('adventure')">🥾 Adventure</button>
+    <button class="button" onclick="selectCategory('groceries')">🍞 Groceries</button>
+    <div class="back-container">
+        <button class="button" onclick="goBack()">← Back</button>
+    </div>
+</div>
+
 <div id="chatArea">
     <div class="whatsapp-bubble" id="bubble1" style="display:none;">
         🛈 Premium Tip 1: Here’s your unlocked secret tip! ✔✔
@@ -66,19 +84,41 @@
 </div>
 
 <script>
-    function showBubbles() {
-        if (isUnlocked('tip1')) {
-            document.getElementById('bubble1').style.display = 'block';
-            document.getElementById('lockedBubble1').style.display = 'none';
-        }
-        if (isUnlocked('tip2')) {
-            document.getElementById('bubble2').style.display = 'block';
-            document.getElementById('lockedBubble2').style.display = 'none';
-        }
-    }
-    showBubbles();
-</script>
+    let activeCategory = null;
 
+    function selectCategory(category) {
+        const chatArea = document.getElementById('chatArea');
+        if (activeCategory === category) {
+            resetCategories();
+            activeCategory = null;
+            return;
+        }
+        activeCategory = category;
+        document.getElementById('categories').style.display = 'none';
+        chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
+    }
+
+    function showCategories(lang) {
+        document.getElementById('languageSelection').style.display = 'none';
+        document.getElementById('categories').style.display = 'block';
+        document.getElementById('chatArea').innerHTML = '';
+        activeCategory = null;
+    }
+
+    function goBack() {
+        document.getElementById('categories').style.display = 'none';
+        document.getElementById('languageSelection').style.display = 'block';
+        document.getElementById('chatArea').innerHTML = '';
+        activeCategory = null;
+    }
+
+    function resetCategories() {
+        document.getElementById('categories').style.display = 'block';
+        document.getElementById('chatArea').innerHTML = '';
+        activeCategory = null;
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+</script>
 
 <script>
     const masterCode = 'allaccess2025';
@@ -105,9 +145,20 @@
         return localStorage.getItem('unlocked_master') || localStorage.getItem('unlocked_' + bubbleKey);
     }
 
-    checkUnlocks();
-</script>
+    function showPremiumBubbles() {
+        if (isUnlocked('tip1')) {
+            document.getElementById('bubble1').style.display = 'block';
+            document.getElementById('lockedBubble1').style.display = 'none';
+        }
+        if (isUnlocked('tip2')) {
+            document.getElementById('bubble2').style.display = 'block';
+            document.getElementById('lockedBubble2').style.display = 'none';
+        }
+    }
 
+    checkUnlocks();
+    showPremiumBubbles();
+</script>
 
 </body>
 </html>
