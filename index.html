@@ -188,9 +188,13 @@
                     </div>`;
                 }, 1000);
             }
-            chatArea.innerHTML += `<div class="back-container">
-                <button class="back-button" onclick="resetCategories()">← Back</button>
-            </div>`;
+            
+    setTimeout(() => {
+        chatArea.innerHTML += `<div class="back-container">
+            <button class="back-button" onclick="resetCategories()">← Back</button>
+        </div>`;
+    }, category === 'groceries' ? 1100 : 0);
+    
         }
 
         function showCategories(lang) {
