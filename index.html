@@ -205,32 +205,14 @@
             chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
             
             
-
-
-
 if (category === 'groceries') {
-    insertGroceriesBubbles();
-} else if (category === 'seiseralm') {
-    insertSeiserAlmBubbles();
-} else {
-
-    insertGroceriesBubbles();
-} else if (category === 'seiseralm') {
-    insertSeiserAlmBubbles();
-} else {
-
-    insertGroceriesBubbles();
-} else if (category === 'seiseralm') {
-    insertSeiserAlmBubbles();
-} else {
-
     const firstBubble = document.createElement('div');
     firstBubble.className = 'whatsapp-bubble';
     firstBubble.style.animation = 'slideIn 1s forwards';
     firstBubble.innerHTML = "Here’s a tip I’ll give you for free — and it’s an important one! In South Tyrol, buying bottled water is unnecessary. We have some of the world’s finest tap water — fresh, pure, and drinkable everywhere. It even tastes better than most bottled water. So save your money, skip the plastic, and enjoy South Tyrol’s natural water. You’re welcome! <span class='checkmarks'>✔✔</span>";
     chatArea.appendChild(firstBubble);
 
-    setTimeout(() => {
+    setTimeout(function() {
         const secondBubble = document.createElement('div');
         secondBubble.className = 'whatsapp-bubble';
         secondBubble.style.animation = 'slideIn 1s forwards';
@@ -242,6 +224,7 @@ if (category === 'groceries') {
         backBtn.innerHTML = '<button class="back-button" onclick="resetCategories()">← Back</button>';
         chatArea.appendChild(backBtn);
     }, 1000);
+
 } else if (category === 'seiseralm') {
     const firstBubble = document.createElement('div');
     firstBubble.className = 'whatsapp-bubble';
@@ -249,11 +232,11 @@ if (category === 'groceries') {
     firstBubble.innerHTML = "The Seiser Alm is famous for its breathtaking panoramic views, perfect for hiking, walking, mountain biking, and more. But it’s also a hotspot for tourists — which often means crowded trails and packed spots. Good thing I know a few insider tips on how locals explore the Seiser Alm, including the best routes and the most stunning hidden spots. And of course, I’m here to share them with you. <span class='checkmarks'>✔✔</span>";
     chatArea.appendChild(firstBubble);
 
-    setTimeout(() => {
+    setTimeout(function() {
         const teaserBubble = document.createElement('div');
         teaserBubble.className = 'whatsapp-bubble';
         teaserBubble.style.animation = 'slideIn 1s forwards';
-        teaserBubble.innerHTML = "Would you like to know how to reach the Seiser Alm while saving money — and avoiding the typical tourist crowds? I know that sounds like a bold promise, but I’ll show you how to experience the Seiser Alm in its most beautiful, peaceful, and affordable way — just like a true local would.<br><br><i>So, the Seiser Alm tends to get crowded during the day... but...</i><br><span style='opacity: 0.6;'>Unlock the full tip and discover how locals really do it.</span><br><button class='butt...
+        teaserBubble.innerHTML = "Would you like to know how to reach the Seiser Alm while saving money — and avoiding the typical tourist crowds? I know that sounds like a bold promise, but I’ll show you how to experience the Seiser Alm in its most beautiful, peaceful, and affordable way — just like a true local would.<br><br><i>So, the Seiser Alm tends to get crowded during the day... but...</i><br><span style='opacity: 0.6;'>Unlock the full tip and discover how locals really do it.</span><br><butto...
         chatArea.appendChild(teaserBubble);
 
         const backBtn = document.createElement('div');
