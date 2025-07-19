@@ -264,7 +264,13 @@ function insertSeiserAlmBubbles() {
             document.getElementById('categories').style.display = 'none';
             chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
             
-            if (category === 'groceries') {
+            
+    if (category === 'groceries') {
+        insertGroceriesBubbles();
+    } else if (category === 'seiseralm') {
+        insertSeiserAlmBubbles();
+    } else {
+    
                 const firstBubble = document.createElement('div');
                 firstBubble.className = 'whatsapp-bubble';
                 firstBubble.style.animation = 'slideIn 1s forwards';
