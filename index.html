@@ -187,6 +187,18 @@
     </div>
 
     <div id="chatArea"></div>
+<div id="seiseralmBubbles" style="display:none;">
+    <div class="whatsapp-bubble" style="animation: slideIn 1s forwards;">
+        The Seiser Alm is famous for its breathtaking panoramic views, perfect for hiking, walking, mountain biking, and more. But it’s also a hotspot for tourists — which often means crowded trails and packed spots. Good thing I know a few insider tips on how locals explore the Seiser Alm, including the best routes and the most stunning hidden spots. And of course, I’m here to share them with you. <span class='checkmarks'>✔✔</span>
+    </div>
+    <div class="whatsapp-bubble" style="animation: slideIn 1s forwards; animation-delay: 1s;">
+        Would you like to know how to reach the Seiser Alm while saving money — and avoiding the typical tourist crowds? I know that sounds like a bold promise, but I’ll show you how to experience the Seiser Alm in its most beautiful, peaceful, and affordable way — just like a true local would.<br><br><i>So, the Seiser Alm tends to get crowded during the day... but...</i><br><span style="opacity: 0.6;">Unlock the full tip and discover how locals really do it.</span><br><button class="button" onclick="...
+    </div>
+    <div class="back-container">
+        <button class="back-button" onclick="resetCategories()">← Back</button>
+    </div>
+</div>
+
 
     
     
@@ -206,44 +218,10 @@
             
             
 if (category === 'groceries') {
-    const firstBubble = document.createElement('div');
-    firstBubble.className = 'whatsapp-bubble';
-    firstBubble.style.animation = 'slideIn 1s forwards';
-    firstBubble.innerHTML = "Here’s a tip I’ll give you for free — and it’s an important one! In South Tyrol, buying bottled water is unnecessary. We have some of the world’s finest tap water — fresh, pure, and drinkable everywhere. It even tastes better than most bottled water. So save your money, skip the plastic, and enjoy South Tyrol’s natural water. You’re welcome! <span class='checkmarks'>✔✔</span>";
-    chatArea.appendChild(firstBubble);
-
-    setTimeout(function() {
-        const secondBubble = document.createElement('div');
-        secondBubble.className = 'whatsapp-bubble';
-        secondBubble.style.animation = 'slideIn 1s forwards';
-        secondBubble.innerHTML = "Aaah… and here’s another tip I’ll give you for free. It’s about groceries — and of course, I have to support my local friends.<br><br><img src='./images/bauernmarkt.jpeg' alt='Farmers Market' style='display:block; max-width:90%; margin:10px auto; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.2);'><br>In <b>Seis am Schlern / Siusi allo Sciliar</b>, there’s a farmers’ market every <b>Tuesday from 8:00 AM to 12:00 PM</b> right in the town center.<br><br>...
-        chatArea.appendChild(secondBubble);
-
-        const backBtn = document.createElement('div');
-        backBtn.className = 'back-container';
-        backBtn.innerHTML = '<button class="back-button" onclick="resetCategories()">← Back</button>';
-        chatArea.appendChild(backBtn);
-    }, 1000);
-
+    insertGroceriesBubbles();
 } else if (category === 'seiseralm') {
-    const firstBubble = document.createElement('div');
-    firstBubble.className = 'whatsapp-bubble';
-    firstBubble.style.animation = 'slideIn 1s forwards';
-    firstBubble.innerHTML = "The Seiser Alm is famous for its breathtaking panoramic views, perfect for hiking, walking, mountain biking, and more. But it’s also a hotspot for tourists — which often means crowded trails and packed spots. Good thing I know a few insider tips on how locals explore the Seiser Alm, including the best routes and the most stunning hidden spots. And of course, I’m here to share them with you. <span class='checkmarks'>✔✔</span>";
-    chatArea.appendChild(firstBubble);
-
-    setTimeout(function() {
-        const teaserBubble = document.createElement('div');
-        teaserBubble.className = 'whatsapp-bubble';
-        teaserBubble.style.animation = 'slideIn 1s forwards';
-        teaserBubble.innerHTML = "Would you like to know how to reach the Seiser Alm while saving money — and avoiding the typical tourist crowds? I know that sounds like a bold promise, but I’ll show you how to experience the Seiser Alm in its most beautiful, peaceful, and affordable way — just like a true local would.<br><br><i>So, the Seiser Alm tends to get crowded during the day... but...</i><br><span style='opacity: 0.6;'>Unlock the full tip and discover how locals really do it.</span><br><butto...
-        chatArea.appendChild(teaserBubble);
-
-        const backBtn = document.createElement('div');
-        backBtn.className = 'back-container';
-        backBtn.innerHTML = '<button class="back-button" onclick="resetCategories()">← Back</button>';
-        chatArea.appendChild(backBtn);
-    }, 1000);
+    document.getElementById('chatArea').innerHTML = '<button class="button" onclick="selectCategory(\'seiseralm\')">⛰️ Seiser Alm</button>';
+    document.getElementById('seiseralmBubbles').style.display = 'block';
 } else {
 
                 const firstBubble = document.createElement('div');
