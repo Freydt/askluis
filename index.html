@@ -96,6 +96,10 @@
             margin-top: 10px;
         }
         .whatsapp-bubble {
+        opacity: 0;
+        transform: translateX(100%);
+        animation: slideIn 0.6s forwards;
+    
             background: white;
             color: black;
             border-radius: 8px;
@@ -127,7 +131,15 @@
             color: #34b7f1;
             margin-top: 5px;
         }
+    
+    @keyframes slideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
     </style>
+
 </head>
 <body>
 
@@ -168,13 +180,13 @@
             chatArea.innerHTML = `<button class="button">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
             
             if (category === 'groceries') {
-                chatArea.innerHTML += `<div class="whatsapp-bubble">
+                chatArea.innerHTML += `<div class="whatsapp-bubble" style="animation-delay: 0s;">
                     Here’s a tip I’ll give you for free — and it’s an important one! In South Tyrol, buying bottled water is unnecessary. We have some of the world’s finest tap water — fresh, pure, and drinkable everywhere. It even tastes better than most bottled water. So save your money, skip the plastic, and enjoy South Tyrol’s natural water. You’re welcome!
                     <span class="checkmarks">✔✔</span>
                 </div>`;
                 
                 setTimeout(() => {
-                    chatArea.innerHTML += `<div class="whatsapp-bubble">
+                    chatArea.innerHTML += `<div class="whatsapp-bubble" style="animation-delay: 0s;">
                         Aaah… and here’s another tip I’ll give you for free. It’s about groceries — and of course, I have to support my local friends.<br><br>
                         <img src="./images/bauernmarkt.jpeg" alt="Farmers Market" style="display:block; max-width:90%; margin:10px auto; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.2);"><br>
                         In <b>Seis am Schlern / Siusi allo Sciliar</b>, there’s a farmers’ market every <b>Tuesday from 8:00 AM to 12:00 PM</b> right in the town center.<br><br>
