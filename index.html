@@ -137,7 +137,35 @@
     </style>
 </head>
 <body>
-    <!-- Original unchanged content omitted for brevity -->
+
+    <div class="header-container">
+        <img src="./images/luis.png" alt="Luis the old man" class="header-image" id="headerImg">
+        <div class="header-fade"></div>
+        <div class="header">
+            <img src="./images/luisprofile2.png" alt="Luis Profile" class="profile-pic">
+            <div class="profile-text">
+                <div class="profile-name">Luis</div>
+                <div class="profile-status">online</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="languageSelection">
+        <button class="button" onclick="showCategories('de')">🇩🇪 Deutsch</button>
+        <button class="button" onclick="showCategories('it')">🇮🇹 Italiano</button>
+        <button class="button" onclick="showCategories('en')">🇬🇧 English</button>
+    </div>
+
+    <div id="categories" style="display:none;">
+        <button class="button" onclick="selectCategory('seiseralm')">⛰️ Seiser Alm</button>
+        <button class="button" onclick="selectCategory('adventure')">🥾 Adventure</button>
+        <button class="button" onclick="selectCategory('groceries')">🍞 Groceries</button>
+        <div class="back-container">
+            <button class="back-button" onclick="goBack()">← Back</button>
+        </div>
+    </div>
+
+    <div id="chatArea"></div>
 
     <script>
         function selectCategory(category) {
@@ -164,6 +192,30 @@
                 <button class="back-button" onclick="resetCategories()">← Back</button>
             </div>`;
         }
+
+        function showCategories(lang) {
+            document.getElementById('languageSelection').style.display = 'none';
+            document.getElementById('categories').style.display = 'block';
+            document.getElementById('chatArea').innerHTML = '';
+        }
+
+        function goBack() {
+            document.getElementById('categories').style.display = 'none';
+            document.getElementById('languageSelection').style.display = 'block';
+            document.getElementById('chatArea').innerHTML = '';
+        }
+
+        function resetCategories() {
+            document.getElementById('categories').style.display = 'block';
+            document.getElementById('chatArea').innerHTML = '';
+        }
+
+        window.addEventListener('scroll', function() {
+            const headerImg = document.getElementById('headerImg');
+            const scrollY = window.scrollY;
+            headerImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+        });
     </script>
+
 </body>
 </html>
