@@ -207,79 +207,88 @@
 
     
     
-    <script>
-        let activeCategory = null;
+    
+<script>
+    let activeCategory = null;
 
-        function selectCategory(category) {
-            const chatArea = document.getElementById('chatArea');
-            if (activeCategory === category) {
-                resetCategories();
-                activeCategory = null;
-                return;
-            }
-            activeCategory = category;
-            document.getElementById('categories').style.display = 'none';
-            chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
-            
-            if (category === 'groceries') {
-                const firstBubble = document.createElement('div');
-                firstBubble.className = 'whatsapp-bubble';
-                firstBubble.style.animation = 'slideIn 1s forwards';
-                firstBubble.innerHTML = `Here’s a tip I’ll give you for free — and it’s an important one! In South Tyrol, buying bottled water is unnecessary. We have some of the world’s finest tap water — fresh, pure, and drinkable everywhere. It even tastes better than most bottled water. So save your money, skip the plastic, and enjoy South Tyrol’s natural water. You’re welcome!
-                    <span class="checkmarks">✔✔</span>`;
-                chatArea.appendChild(firstBubble);
-
-                setTimeout(() => {
-                    const secondBubble = document.createElement('div');
-                    secondBubble.className = 'whatsapp-bubble';
-                    secondBubble.style.animation = 'slideIn 1s forwards';
-                    secondBubble.innerHTML = `Aaah… and here’s another tip I’ll give you for free. It’s about groceries — and of course, I have to support my local friends.<br><br>
-                        <img src="./images/bauernmarkt.jpeg" alt="Farmers Market" style="display:block; max-width:90%; margin:10px auto; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.2);"><br>
-                        In <b>Seis am Schlern / Siusi allo Sciliar</b>, there’s a farmers’ market every <b>Tuesday from 8:00 AM to 12:00 PM</b> right in the town center.<br><br>
-                        Here, you’ll find the best local products — handmade and homegrown by farmers from the area. A small market with stalls offering fresh goods at fair prices. You really can’t get better quality than this.<br><br>
-                        You’ll find a variety of <b>potatoes, cherries, apricots, cucumbers, cheese, speck, zucchini, wine, jams</b>, and — depending on the season — much more.<br><br>
-                        The same farmers' market also takes place in <b>Kastelruth / Castelrotto</b> every <b>Friday from 8:00 AM to 12:00 PM</b> in the town center.
-                        <span class="checkmarks">✔✔</span>`;
-                    chatArea.appendChild(secondBubble);
-
-                    const backBtn = document.createElement('div');
-                    backBtn.className = 'back-container';
-                    backBtn.innerHTML = `<button class="back-button" onclick="resetCategories()">← Back</button>`;
-                    chatArea.appendChild(backBtn);
-
-                }, 1000);
-            } else {
-                chatArea.innerHTML += `<div class="back-container">
-                    <button class="back-button" onclick="resetCategories()">← Back</button>
-                </div>`;
-            }
-        }
-
-        function showCategories(lang) {
-            document.getElementById('languageSelection').style.display = 'none';
-            document.getElementById('categories').style.display = 'block';
-            document.getElementById('chatArea').innerHTML = '';
+    function selectCategory(category) {
+        const chatArea = document.getElementById('chatArea');
+        if (activeCategory === category) {
+            resetCategories();
             activeCategory = null;
+            return;
         }
+        activeCategory = category;
+        document.getElementById('categories').style.display = 'none';
+        chatArea.innerHTML = `<button class="button" onclick="selectCategory('${category}')">${category === 'seiseralm' ? '⛰️ Seiser Alm' : category === 'adventure' ? '🥾 Adventure' : '🍞 Groceries'}</button>`;
+    }
 
-        function goBack() {
-            document.getElementById('categories').style.display = 'none';
-            document.getElementById('languageSelection').style.display = 'block';
-            document.getElementById('chatArea').innerHTML = '';
-            activeCategory = null;
-        }
+    function showCategories(lang) {
+        document.getElementById('languageSelection').style.display = 'none';
+        document.getElementById('categories').style.display = 'block';
+        document.getElementById('chatArea').innerHTML = '';
+        activeCategory = null;
+    }
 
-        
+    function goBack() {
+        document.getElementById('categories').style.display = 'none';
+        document.getElementById('languageSelection').style.display = 'block';
+        document.getElementById('chatArea').innerHTML = '';
+        activeCategory = null;
+    }
+
     function resetCategories() {
         document.getElementById('categories').style.display = 'block';
         document.getElementById('chatArea').innerHTML = '';
         activeCategory = null;
         window.scrollTo({ top: 0, behavior: 'instant' });
     }
-    
 
-        window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function() {
         const headerImg = document.getElementById('headerImg');
+        const scrollY = window.scrollY;
+        headerImg.style.transform = `translateY(${scrollY * 0.2}px)`;
+    });
+
+    // Unlock logic
+    const masterCode = 'allaccess2025';
+    const unlockCodes = {
+        'local2KZ': 'tip1',
+        'tip5XLM': 'tip2'
+    };
+
+    function checkUnlocks() {
+        const params = new URLSearchParams(window.location.search);
+        const accessCode = params.get('access');
+        if (accessCode) {
+            if (accessCode === masterCode) {
+                localStorage.setItem('unlocked_master', true);
+            }
+            if (unlockCodes[accessCode]) {
+                localStorage.setItem('unlocked_' + unlockCodes[accessCode], true);
+            }
+        }
+    }
+
+    function isUnlocked(bubbleKey) {
+        return localStorage.getItem('unlocked_master') || localStorage.getItem('unlocked_' + bubbleKey);
+    }
+
+    function showPremiumBubbles() {
+        if (isUnlocked('tip1')) {
+            document.getElementById('bubble1').style.display = 'block';
+            document.getElementById('lockedBubble1').style.display = 'none';
+        }
+        if (isUnlocked('tip2')) {
+            document.getElementById('bubble2').style.display = 'block';
+            document.getElementById('lockedBubble2').style.display = 'none';
+        }
+    }
+
+    checkUnlocks();
+    showPremiumBubbles();
+</script>
+
         const scrollY = window.scrollY;
         headerImg.style.transform = `translateY(${scrollY * 0.2}px)`;
     });
